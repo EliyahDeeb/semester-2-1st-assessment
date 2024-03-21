@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- The first line of the <meta charset> code helps the webpage understand different types of characters. 
+        The second line helps the calculator adjust to fit on different screen sizes, like phones or computers. 
+        This makes sure the calculator looks good and works well no matter what device you're using.-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrol Calculator</title>
+
+    <!-- The styles used for the calculator. -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #22a009;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #068d3a;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- The code below creates a webpage with a section for a "Petrol Calculator". 
+        It includes spaces for entering the cost per liter of petrol and the number of liters you want to buy. 
+        
+        When you click the "Calculate Total Cost" button, it will show you the total cost of the petrol you want to purchase. 
+        The initial values are set to $1.72 per liter and 0 liters, but you can change these values to calculate the total cost based on your own input.
+
+        This code helps users quickly and easily determine how much they will spend on petrol based on the cost per liter and the amount of petrol they 
+        want to purchase.-->
+
+    <div class="container">
+        <h1>Petrol Calculator</h1>
+        <label for="cost">Cost per liter:</label>
+        <input type="number" id="cost" value="1.72" step="0.01">
+        <label for="liters">Number of liters:</label>
+        <input type="number" id="liters" value="0" step="0.01">
+        <button onclick="calculate()">Calculator Total Cost</button>
+        <p id="total"></p>
+
+        <!-- Scripts are now made to ensure that the calculator functions. -->
+        <script>
+            // This code is a JavaScript function that takes a number and adds commas to it to make it easier to read.
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            // This code is a JavaScript function that calculates the total cost of a purchase, by adding commas for clarity and fixing it to 2 decimal places.
+            function calculate() {
+                const cost = parseFloat(document.getElementById("cost").value);
+                const liters = parseFloat(document.getElementById("liters").value);
+                const total = cost * liters;
+                document.getElementById("total").innerText = "Total cost: AED " + numberWithCommas(total.toFixed(2)) + "";
+            }
+
+            // These lines of code make certain input fields on a webpage ready for the user to type in values, and then remove the focus so that they are no longer highlighted.
+            // The first two lines focus on the input field named "cost," bringing it into the foreground for user interaction. The "blur" method is then applied to remove this focus. 
+            // The next two lines act in a similar way for the input field named "liters." They bring this field into focus for user input and then remove the focus using the "blur" method.
+            document.getElementById("cost").focus();
+            document.getElementById("cost").blur();
+            document.getElementById("liters").focus();
+            document.getElementById("liters").blur();
+        </script>
+    </div>
+</body>
+</html>
